@@ -1,0 +1,15 @@
+How to run in Vivado
+1. Create Project → RTL Project → select your Artix-7 part.
+2. Add the design file(s) under Design Sources (sub-module first, e.g. mux2to1.v before mux4to1.v). Add the testbench under
+Simulation Sources.
+3. Right-click the testbench → Set as Top.
+4. Run Simulation → Run Behavioral Simulation and read the waveform. Every testbench ends with $finish before 1000 ns, so the
+default run time is enough.
+5. To read buses (count, Y, G) as numbers: right-click the signal → Radix → Binary or Unsigned Decimal.
+Rules used in every program
+• `timescale 1ns / 1ps at the top of every file: time unit 1 ns, precision 1 ps, so #10 = 10 ns. (Vivado puts this line in new files by
+itself.)
+• Testbench: inputs we drive are reg, outputs we watch are wire; the design is instantiated as uut (unit under test).
+• Clocked (sequential) always blocks use non-blocking <=; combinational always blocks use blocking =.
+• Each experiment page has: module diagram → truth table → code → output.
+• Every program was compiled and simulated: 0 errors, and the waveform matches the tables on its page.
